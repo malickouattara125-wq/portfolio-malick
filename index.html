@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malick Ouattara | Community Manager · Graphiste · Développeur Front-End</title>
+<meta name="description" content="Portfolio de Malick Ouattara — Community Manager, Graphiste et Développeur Front-End Junior basé à Abidjan, Côte d'Ivoire.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --navy-950:#070b18;
+  --navy-900:#0a1128;
+  --navy-800:#0f1a3d;
+  --navy-700:#152552;
+  --navy-600:#1c3170;
+  --gold-500:#e8a53d;
+  --gold-400:#f2b953;
+  --gold-300:#f7d08a;
+  --cream-50:#faf8f4;
+  --cream-100:#f3efe6;
+  --ink-900:#12172b;
+  --ink-700:#3a4160;
+  --ink-500:#6b7290;
+  --line:#e7e2d6;
+  --radius:18px;
+  --shadow-lg:0 24px 60px -20px rgba(10,17,40,.35);
+  --shadow-sm:0 8px 24px -12px rgba(10,17,40,.18);
+  --maxw:1160px;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',system-ui,sans-serif;
+  background:var(--cream-50);
+  color:var(--ink-900);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,.brand,.nav-links a,.btn{font-family:'Poppins',system-ui,sans-serif}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{position:relative}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-500);
+  margin-bottom:14px;
+}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--gold-500);border-radius:2px}
+.section-head{max-width:640px;margin:0 auto 52px;text-align:center}
+.section-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:700;letter-spacing:-.01em}
+.section-head p{margin-top:14px;color:var(--ink-500);font-size:1.02rem}
+.dark .section-head p{color:#aab0cc}
+.dark .eyebrow{color:var(--gold-400)}
+
+/* ---------- Reveal animation ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.08s}
+.reveal-delay-2{transition-delay:.16s}
+.reveal-delay-3{transition-delay:.24s}
+.reveal-delay-4{transition-delay:.32s}
+
+/* ---------- Header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:16px 0;
+  transition:background .35s ease, box-shadow .35s ease, padding .35s ease;
+}
+header .container{display:flex;align-items:center;justify-content:space-between}
+header.scrolled{
+  background:rgba(10,17,40,.86);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  box-shadow:0 8px 30px -12px rgba(0,0,0,.4);
+  padding:11px 0;
+}
+.brand{font-weight:800;font-size:1.15rem;color:#fff;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.brand .dot{color:var(--gold-400)}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{
+  color:#dfe2f0;font-weight:500;font-size:.92rem;
+  position:relative;padding:4px 0;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;
+  background:var(--gold-400);transition:width .3s ease;
+}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-500));
+  color:var(--navy-950)!important;font-weight:700;
+  padding:10px 20px;border-radius:100px;font-size:.88rem;
+}
+.nav-cta::after{display:none}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:1100}
+.burger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+.mobile-menu{
+  position:fixed;inset:0;background:var(--navy-950);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  transform:translateY(-100%);transition:transform .4s cubic-bezier(.2,.7,.2,1);
+  z-index:1050;
+}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{color:#fff;font-size:1.3rem;font-weight:600}
+.mobile-menu .nav-cta{color:var(--navy-950)!important}
+
+/* ---------- Hero ---------- */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  background:
+    radial-gradient(ellipse 900px 500px at 82% 12%, rgba(232,165,61,.22), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 10% 90%, rgba(28,49,112,.6), transparent 60%),
+    linear-gradient(160deg,var(--navy-950) 0%, var(--navy-900) 45%, var(--navy-800) 100%);
+  color:#fff;
+  padding:150px 0 90px;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse 80% 60% at 60% 30%, black, transparent 75%);
+  pointer-events:none;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;
+  position:relative;z-index:2;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  padding:8px 16px;border-radius:100px;font-size:.82rem;font-weight:600;color:var(--gold-300);
+  margin-bottom:26px;backdrop-filter:blur(6px);
+}
+.hero-tag i{color:var(--gold-400)}
+.hero h1{
+  font-size:clamp(2.3rem,5.2vw,3.7rem);
+  font-weight:800;line-height:1.08;letter-spacing:-.02em;
+  margin-bottom:18px;
+}
+.hero h1 span{
+  background:linear-gradient(135deg,var(--gold-300),var(--gold-500));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero .role{
+  font-size:clamp(1.05rem,1.8vw,1.3rem);color:#c3c9e6;font-weight:600;margin-bottom:20px;
+}
+.hero .role .sep{color:var(--gold-400);margin:0 10px;font-weight:400}
+.hero p.pitch{
+  font-size:1.06rem;color:#aab0cc;max-width:520px;margin-bottom:38px;
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 28px;border-radius:100px;font-weight:700;font-size:.95rem;
+  cursor:pointer;border:none;transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-500));
+  color:var(--navy-950);
+  box-shadow:0 14px 30px -10px rgba(232,165,61,.55);
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 36px -10px rgba(232,165,61,.65)}
+.btn-ghost{
+  background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.22);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.13);transform:translateY(-3px)}
+.hero-stats{display:flex;gap:34px;margin-top:52px;flex-wrap:wrap}
+.hero-stats div strong{display:block;font-size:1.7rem;font-weight:800;color:#fff}
+.hero-stats div span{font-size:.82rem;color:#9aa1c4}
+
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-orb{
+  width:min(360px,80vw);aspect-ratio:1;border-radius:50%;position:relative;
+  background:linear-gradient(150deg,var(--navy-600),var(--navy-800));
+  border:1px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.6), inset 0 0 60px rgba(232,165,61,.08);
+}
+.hero-orb::before{
+  content:"";position:absolute;inset:-18px;border-radius:50%;
+  border:1px dashed rgba(232,165,61,.35);
+  animation:spin 26s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.avatar-initials{
+  width:78%;aspect-ratio:1;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-500));
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(3rem,8vw,4.2rem);font-weight:800;color:var(--navy-950);
+  font-family:'Poppins',sans-serif;
+  box-shadow:0 20px 50px -12px rgba(232,165,61,.5);
+}
+.hero-badge{
+  position:absolute;background:#fff;color:var(--navy-950);
+  padding:12px 16px;border-radius:14px;box-shadow:var(--shadow-lg);
+  display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:700;
+}
+.hero-badge i{color:var(--gold-500);font-size:1.1rem}
+.hero-badge.b1{top:6%;left:-6%;animation:float 5s ease-in-out infinite}
+.hero-badge.b2{bottom:8%;right:-8%;animation:float 5s ease-in-out infinite 1.2s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.scroll-cue{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;color:#9aa1c4;font-size:.72rem;
+  letter-spacing:.1em;text-transform:uppercase;z-index:2;
+}
+.scroll-cue .line{width:1px;height:34px;background:linear-gradient(to bottom, var(--gold-400), transparent);animation:pulse-line 1.8s ease-in-out infinite}
+@keyframes pulse-line{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ---------- About ---------- */
+.about{background:var(--cream-50);padding:120px 0}
+.about-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:64px;align-items:center}
+.about-photo{position:relative;display:flex;justify-content:center}
+.photo-frame{
+  width:min(300px,80vw);aspect-ratio:1;border-radius:32px;position:relative;
+  background:linear-gradient(150deg,var(--navy-700),var(--navy-900));
+  padding:10px;box-shadow:var(--shadow-lg);
+}
+.photo-frame .circle{
+  width:100%;height:100%;border-radius:26px;
+  background:linear-gradient(160deg,var(--gold-300),var(--gold-500) 55%,var(--navy-700));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',sans-serif;font-weight:800;font-size:4.4rem;color:rgba(7,11,24,.85);
+  position:relative;overflow:hidden;
+}
+.photo-frame .circle::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 20%, rgba(255,255,255,.35), transparent 55%);
+}
+.photo-frame::before{
+  content:"";position:absolute;inset:-14px;border:1px solid var(--line);border-radius:38px;z-index:-1;
+}
+.about-copy h2{font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:700;margin-bottom:20px;letter-spacing:-.01em}
+.about-copy p{color:var(--ink-700);font-size:1.03rem;margin-bottom:16px}
+.about-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:30px}
+.fact{
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.fact i{color:var(--gold-500);font-size:1.15rem;margin-top:2px}
+.fact strong{display:block;font-size:.88rem;font-weight:700}
+.fact span{font-size:.82rem;color:var(--ink-500)}
+
+/* ---------- Skills ---------- */
+.skills{
+  background:linear-gradient(180deg,var(--navy-950),var(--navy-900));
+  color:#fff;padding:120px 0;
+}
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.skill-card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+  border-radius:var(--radius);padding:28px 24px;
+  transition:transform .3s ease, background .3s ease, border-color .3s ease;
+}
+.skill-card:hover{transform:translateY(-6px);background:rgba(255,255,255,.07);border-color:rgba(232,165,61,.4)}
+.skill-icon{
+  width:50px;height:50px;border-radius:14px;
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-500));
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--navy-950);
+  margin-bottom:18px;
+}
+.skill-card h3{font-size:1.02rem;font-weight:700;margin-bottom:8px}
+.skill-card p{font-size:.86rem;color:#a7adcc}
+
+/* ---------- Tools ---------- */
+.tools{background:var(--cream-50);padding:110px 0}
+.tools-grid{
+  display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:900px;margin:0 auto;
+}
+.tool-badge{
+  display:flex;align-items:center;gap:10px;
+  background:#fff;border:1px solid var(--line);border-radius:100px;
+  padding:12px 22px;font-weight:600;font-size:.9rem;color:var(--ink-900);
+  box-shadow:var(--shadow-sm);transition:transform .25s ease, border-color .25s ease, color .25s ease;
+}
+.tool-badge i{font-size:1.05rem;color:var(--gold-500)}
+.tool-badge:hover{transform:translateY(-4px);border-color:var(--gold-500);color:var(--navy-800)}
+
+/* ---------- Experience ---------- */
+.experience{background:var(--navy-950);color:#fff;padding:120px 0 130px}
+.timeline{position:relative;max-width:820px;margin:0 auto}
+.timeline::before{
+  content:"";position:absolute;left:20px;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(to bottom, var(--gold-400), rgba(232,165,61,.12));
+}
+.tl-item{position:relative;padding-left:64px;margin-bottom:44px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{
+  position:absolute;left:11px;top:4px;width:20px;height:20px;border-radius:50%;
+  background:var(--navy-950);border:3px solid var(--gold-400);
+  box-shadow:0 0 0 5px rgba(232,165,61,.12);
+}
+.tl-item.current .tl-dot{background:var(--gold-400);box-shadow:0 0 0 6px rgba(232,165,61,.22)}
+.tl-card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+  border-radius:16px;padding:24px 26px;
+}
+.tl-period{
+  display:inline-block;font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gold-400);margin-bottom:8px;
+}
+.tl-card h3{font-size:1.12rem;font-weight:700;margin-bottom:4px}
+.tl-card .tl-org{font-size:.9rem;color:#a7adcc;font-weight:600;margin-bottom:10px}
+.tl-card p{font-size:.9rem;color:#9aa1c4}
+.current-pill{
+  display:inline-flex;align-items:center;gap:6px;margin-left:10px;
+  background:rgba(232,165,61,.15);color:var(--gold-300);font-size:.68rem;font-weight:700;
+  padding:3px 10px;border-radius:100px;letter-spacing:.05em;text-transform:uppercase;
+  vertical-align:middle;
+}
+.current-pill .pulse{width:6px;height:6px;border-radius:50%;background:var(--gold-400);animation:pulse-dot 1.6s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ---------- Portfolio ---------- */
+.portfolio{background:var(--cream-50);padding:120px 0}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.p-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-sm);transition:transform .3s ease, box-shadow .3s ease;
+}
+.p-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.p-thumb{
+  aspect-ratio:4/3;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.p-thumb i{font-size:2.2rem;color:rgba(255,255,255,.85);position:relative;z-index:1}
+.p-thumb::after{
+  content:"";position:absolute;inset:0;background:rgba(7,11,24,.15);
+}
+.thumb-1{background:linear-gradient(140deg,#1c3170,#e8a53d)}
+.thumb-2{background:linear-gradient(140deg,#0a1128,#3a4160)}
+.thumb-3{background:linear-gradient(140deg,#e8a53d,#152552)}
+.thumb-4{background:linear-gradient(140deg,#152552,#f2b953)}
+.thumb-5{background:linear-gradient(140deg,#3a4160,#e8a53d)}
+.thumb-6{background:linear-gradient(140deg,#e8a53d,#0a1128)}
+.p-body{padding:22px 22px 24px}
+.p-tag{
+  display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--gold-500);margin-bottom:8px;
+}
+.p-body h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.p-body p{font-size:.87rem;color:var(--ink-500)}
+
+/* ---------- Education / Languages ---------- */
+.split-section{background:var(--cream-100);padding:120px 0}
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.edu-item{
+  display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);
+}
+.edu-item:last-child{border-bottom:none}
+.edu-icon{
+  flex:none;width:46px;height:46px;border-radius:12px;
+  background:linear-gradient(135deg,var(--navy-700),var(--navy-900));
+  display:flex;align-items:center;justify-content:center;color:var(--gold-400);font-size:1.1rem;
+}
+.edu-item h3{font-size:1rem;font-weight:700;margin-bottom:4px}
+.edu-item p{font-size:.85rem;color:var(--ink-500)}
+.edu-item .yr{font-size:.78rem;color:var(--gold-500);font-weight:700}
+
+.side-block{margin-bottom:44px}
+.side-block:last-child{margin-bottom:0}
+.side-block h3{font-size:1.05rem;font-weight:700;margin-bottom:20px}
+.lang-row{margin-bottom:16px}
+.lang-row .lang-top{display:flex;justify-content:space-between;font-size:.88rem;font-weight:600;margin-bottom:8px}
+.lang-bar{height:8px;border-radius:100px;background:#e3ded0;overflow:hidden}
+.lang-bar span{display:block;height:100%;border-radius:100px;background:linear-gradient(90deg,var(--gold-400),var(--gold-500))}
+.interest-tags{display:flex;flex-wrap:wrap;gap:10px}
+.interest-tags span{
+  background:#fff;border:1px solid var(--line);padding:9px 16px;border-radius:100px;
+  font-size:.85rem;font-weight:600;display:inline-flex;align-items:center;gap:8px;
+}
+.interest-tags i{color:var(--gold-500)}
+
+/* ---------- Contact ---------- */
+.contact{
+  background:linear-gradient(160deg,var(--navy-950),var(--navy-800));
+  color:#fff;padding:120px 0;position:relative;overflow:hidden;
+}
+.contact::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 700px 400px at 15% 10%, rgba(232,165,61,.16), transparent 60%);
+}
+.contact-inner{position:relative;z-index:1;text-align:center;max-width:640px;margin:0 auto}
+.contact h2{font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:800;margin-bottom:16px;letter-spacing:-.01em}
+.contact p{color:#aab0cc;font-size:1.05rem;margin-bottom:44px}
+.contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:44px}
+.c-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;padding:26px 18px;transition:transform .3s ease, border-color .3s ease;
+}
+.c-card:hover{transform:translateY(-5px);border-color:rgba(232,165,61,.4)}
+.c-card i{font-size:1.4rem;color:var(--gold-400);margin-bottom:12px}
+.c-card strong{display:block;font-size:.92rem;font-weight:700;margin-bottom:4px}
+.c-card span{font-size:.82rem;color:#9aa1c4;word-break:break-word}
+.social-row{display:flex;gap:14px;justify-content:center}
+.social-row a{
+  width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:1.05rem;
+  transition:background .25s ease, transform .25s ease, color .25s ease;
+}
+.social-row a:hover{background:linear-gradient(135deg,var(--gold-400),var(--gold-500));color:var(--navy-950);transform:translateY(-4px)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--navy-950);color:#9aa1c4;padding:32px 0;border-top:1px solid rgba(255,255,255,.08)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-inner p{font-size:.85rem}
+.footer-inner .brand{font-size:1rem;color:#fff}
+.footer-social{display:flex;gap:16px}
+.footer-social a{color:#9aa1c4;font-size:1rem;transition:color .25s ease}
+.footer-social a:hover{color:var(--gold-400)}
+
+/* ---------- Back to top ---------- */
+.to-top{
+  position:fixed;bottom:26px;right:26px;width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-500));color:var(--navy-950);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+  border:none;cursor:pointer;box-shadow:var(--shadow-lg);
+  opacity:0;pointer-events:none;transform:translateY(12px);
+  transition:opacity .3s ease, transform .3s ease;z-index:900;
+}
+.to-top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero p.pitch{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .hero-stats{justify-content:center}
+  .hero-visual{margin-top:20px}
+  .hero-badge{display:none}
+  .about-grid{grid-template-columns:1fr;text-align:center}
+  .about-facts{grid-template-columns:1fr 1fr}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+  .split-grid{grid-template-columns:1fr;gap:70px}
+  .contact-cards{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .burger{display:flex}
+}
+@media (max-width:600px){
+  .hero{padding-top:130px}
+  .skills-grid{grid-template-columns:1fr}
+  .portfolio-grid{grid-template-columns:1fr}
+  .about-facts{grid-template-columns:1fr}
+  .hero-stats{gap:24px}
+  .footer-inner{flex-direction:column;text-align:center}
+  .container{padding:0 18px}
+}
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="container">
+    <a href="#home" class="brand">Malick<span class="dot">.</span>O</a>
+    <nav class="nav-links">
+      <a href="#about">À propos</a>
+      <a href="#skills">Compétences</a>
+      <a href="#experience">Expérience</a>
+      <a href="#portfolio">Réalisations</a>
+      <a href="#education">Formation</a>
+      <a href="#contact" class="nav-cta">Me contacter</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">À propos</a>
+  <a href="#skills">Compétences</a>
+  <a href="#experience">Expérience</a>
+  <a href="#portfolio">Réalisations</a>
+  <a href="#education">Formation</a>
+  <a href="#contact" class="nav-cta">Me contacter</a>
+</div>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="reveal hero-tag"><i class="fa-solid fa-location-dot"></i> Abidjan, Côte d'Ivoire</div>
+      <h1 class="reveal reveal-delay-1">Malick Ouattara — <span>stratégie digitale, contenu & code</span></h1>
+      <p class="role reveal reveal-delay-2">Community Manager <span class="sep">/</span> Graphiste <span class="sep">/</span> Développeur Front-End Junior</p>
+      <p class="pitch reveal reveal-delay-2">Je conçois des stratégies digitales percutantes, j'anime des communautés, je crée des visuels qui marquent et je code des interfaces web modernes — augmentées par l'intelligence artificielle.</p>
+      <div class="hero-actions reveal reveal-delay-3">
+        <a href="#portfolio" class="btn btn-primary"><i class="fa-solid fa-briefcase"></i> Voir mon travail</a>
+        <a href="#contact" class="btn btn-ghost"><i class="fa-regular fa-paper-plane"></i> Me contacter</a>
+      </div>
+      <div class="hero-stats reveal reveal-delay-4">
+        <div><strong>4+</strong><span>Années d'expérience</span></div>
+        <div><strong>10+</strong><span>Marques accompagnées</span></div>
+        <div><strong>9</strong><span>Outils maîtrisés</span></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal reveal-delay-2">
+      <div class="hero-orb">
+        <div class="avatar-initials">MO</div>
+      </div>
+      <div class="hero-badge b1"><i class="fa-brands fa-meta"></i> Meta Ads Certifié</div>
+      <div class="hero-badge b2"><i class="fa-solid fa-code"></i> HTML · CSS · JS</div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="line"></div></div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-photo reveal">
+      <div class="photo-frame">
+        <div class="circle">MO</div>
+      </div>
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow reveal">À propos</div>
+      <h2 class="reveal reveal-delay-1">Un profil hybride, entre stratégie, créativité et code</h2>
+      <p class="reveal reveal-delay-2">Responsable digital, community manager, graphiste et développeur front-end junior basé à Abidjan. J'accompagne des marques et des structures dans leur présence digitale : de la stratégie de contenu à l'animation des réseaux sociaux, en passant par la création visuelle et le pilotage de campagnes Meta Ads.</p>
+      <p class="reveal reveal-delay-2">Curieux et autodidacte, je développe aujourd'hui des compétences en HTML, CSS, JavaScript et WordPress, tout en intégrant l'intelligence artificielle dans mes processus de création visuelle et éditoriale — pour produire plus vite, sans sacrifier la qualité.</p>
+      <div class="about-facts reveal reveal-delay-3">
+        <div class="fact"><i class="fa-solid fa-bullseye"></i><div><strong>Stratégie digitale</strong><span>Pilotage & planification</span></div></div>
+        <div class="fact"><i class="fa-solid fa-users"></i><div><strong>Community Management</strong><span>Animation & engagement</span></div></div>
+        <div class="fact"><i class="fa-solid fa-palette"></i><div><strong>Design graphique</strong><span>Identité & visuels</span></div></div>
+        <div class="fact"><i class="fa-solid fa-code"></i><div><strong>Front-End</strong><span>HTML / CSS / JS</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Compétences</div>
+      <h2 class="reveal reveal-delay-1">Ce que j'apporte à vos projets</h2>
+      <p class="reveal reveal-delay-2">Une expertise transversale entre stratégie digitale, création de contenu et développement web.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal"><div class="skill-icon"><i class="fa-solid fa-chess"></i></div><h3>Pilotage de stratégie digitale</h3><p>Définition d'objectifs, positionnement de marque et plans d'action digitaux orientés résultats.</p></div>
+      <div class="skill-card reveal reveal-delay-1"><div class="skill-icon"><i class="fa-solid fa-comments"></i></div><h3>Community Management</h3><p>Animation de communautés, modération et croissance d'audience sur les réseaux sociaux.</p></div>
+      <div class="skill-card reveal reveal-delay-2"><div class="skill-icon"><i class="fa-solid fa-calendar-days"></i></div><h3>Contenu & calendrier éditorial</h3><p>Conception de contenus engageants et planification éditoriale cohérente et régulière.</p></div>
+      <div class="skill-card reveal reveal-delay-3"><div class="skill-icon"><i class="fa-brands fa-meta"></i></div><h3>Campagnes Meta Ads</h3><p>Paramétrage, ciblage et optimisation de campagnes publicitaires Facebook & Instagram.</p></div>
+      <div class="skill-card reveal"><div class="skill-icon"><i class="fa-solid fa-pen-nib"></i></div><h3>Conception de visuels</h3><p>Création d'identités visuelles, affiches et supports de communication percutants.</p></div>
+      <div class="skill-card reveal reveal-delay-1"><div class="skill-icon"><i class="fa-solid fa-code"></i></div><h3>Développement Front-End</h3><p>Intégration de sites web modernes et responsives en HTML, CSS et JavaScript.</p></div>
+      <div class="skill-card reveal reveal-delay-2"><div class="skill-icon"><i class="fa-brands fa-wordpress"></i></div><h3>WordPress</h3><p>Création et gestion de sites vitrines et blogs sous WordPress.</p></div>
+      <div class="skill-card reveal reveal-delay-3"><div class="skill-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3>IA appliquée</h3><p>Utilisation d'outils d'intelligence artificielle pour la production visuelle et éditoriale.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tools" id="tools">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Outils</div>
+      <h2 class="reveal reveal-delay-1">Outils maîtrisés</h2>
+      <p class="reveal reveal-delay-2">Un environnement de travail complet pour créer, animer et développer.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-badge reveal"><i class="fa-brands fa-adobe"></i> Photoshop</div>
+      <div class="tool-badge reveal"><i class="fa-solid fa-bezier-curve"></i> Illustrator</div>
+      <div class="tool-badge reveal"><i class="fa-solid fa-clapperboard"></i> Premiere Pro</div>
+      <div class="tool-badge reveal"><i class="fa-solid fa-film"></i> CapCut</div>
+      <div class="tool-badge reveal"><i class="fa-brands fa-canva"></i> Canva</div>
+      <div class="tool-badge reveal"><i class="fa-brands fa-meta"></i> Meta Ads</div>
+      <div class="tool-badge reveal"><i class="fa-brands fa-wordpress"></i> WordPress</div>
+      <div class="tool-badge reveal"><i class="fa-brands fa-html5"></i> HTML</div>
+      <div class="tool-badge reveal"><i class="fa-brands fa-css3-alt"></i> CSS</div>
+      <div class="tool-badge reveal"><i class="fa-brands fa-js"></i> JavaScript</div>
+      <div class="tool-badge reveal"><i class="fa-solid fa-robot"></i> Outils d'IA</div>
+      <div class="tool-badge reveal"><i class="fa-solid fa-file-word"></i> Microsoft Office</div>
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Parcours</div>
+      <h2 class="reveal reveal-delay-1">Expérience professionnelle</h2>
+      <p class="reveal reveal-delay-2">Un parcours progressif, du terrain freelance à un poste de responsable digital.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item current reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-period">Depuis juillet 2025 <span class="current-pill"><span class="pulse"></span>Actuel</span></span>
+          <h3>Responsable Digital</h3>
+          <div class="tl-org">Alternative 2 Plus</div>
+          <p>Pilotage de la stratégie digitale globale, supervision du contenu, des campagnes publicitaires et du développement web de la structure.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-period">Janvier – Juin 2025</span>
+          <h3>Consultant Infographiste & Créateur de contenu</h3>
+          <div class="tl-org">Freelance</div>
+          <p>Accompagnement de plusieurs clients dans la création de visuels et de contenus digitaux sur mesure.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-period">Mai – Décembre 2024</span>
+          <h3>Community Manager & Graphiste</h3>
+          <div class="tl-org">O'Paas Lounge & Clubbing</div>
+          <p>Animation des réseaux sociaux et création des supports visuels pour un établissement lounge & clubbing.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-period">Juin – Août 2023</span>
+          <h3>Community Manager & Graphiste freelance</h3>
+          <div class="tl-org">Clients indépendants</div>
+          <p>Gestion de réseaux sociaux et conception graphique pour divers clients indépendants.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-period">Février – Juin 2023</span>
+          <h3>Community Manager & Infographiste</h3>
+          <div class="tl-org">Palmgroup</div>
+          <p>Gestion de la communication digitale et création des contenus visuels de la marque.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-period">Décembre 2022 – Février 2023</span>
+          <h3>Community Manager freelance</h3>
+          <div class="tl-org">Interbat & Equips+</div>
+          <p>Animation des réseaux sociaux et création de contenus pour deux structures partenaires.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-period">Décembre 2022 – Février 2023</span>
+          <h3>Infographiste stagiaire</h3>
+          <div class="tl-org">Ivoir'Motion</div>
+          <p>Stage en conception graphique, premiers pas professionnels dans la création visuelle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Réalisations</div>
+      <h2 class="reveal reveal-delay-1">Portfolio & projets</h2>
+      <p class="reveal reveal-delay-2">Une sélection de projets — visuels réels à intégrer prochainement.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="p-card reveal">
+        <div class="p-thumb thumb-1"><i class="fa-solid fa-image"></i></div>
+        <div class="p-body"><span class="p-tag">Branding</span><h3>Identité visuelle — Marque lifestyle</h3><p>Création d'une charte graphique complète et de supports de communication.</p></div>
+      </div>
+      <div class="p-card reveal reveal-delay-1">
+        <div class="p-thumb thumb-2"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="p-body"><span class="p-tag">Meta Ads</span><h3>Campagne publicitaire — Acquisition</h3><p>Conception et optimisation d'une campagne Meta Ads à forte performance.</p></div>
+      </div>
+      <div class="p-card reveal reveal-delay-2">
+        <div class="p-thumb thumb-3"><i class="fa-solid fa-hashtag"></i></div>
+        <div class="p-body"><span class="p-tag">Social Media</span><h3>Animation réseaux sociaux — Lounge</h3><p>Stratégie de contenu et croissance de communauté pour un établissement.</p></div>
+      </div>
+      <div class="p-card reveal">
+        <div class="p-thumb thumb-4"><i class="fa-solid fa-laptop-code"></i></div>
+        <div class="p-body"><span class="p-tag">Développement</span><h3>Site vitrine — Front-End</h3><p>Intégration HTML/CSS/JS d'un site responsive et moderne.</p></div>
+      </div>
+      <div class="p-card reveal reveal-delay-1">
+        <div class="p-thumb thumb-5"><i class="fa-solid fa-photo-film"></i></div>
+        <div class="p-body"><span class="p-tag">Motion / Vidéo</span><h3>Contenu vidéo — Réseaux sociaux</h3><p>Montage et création de formats courts pour Instagram & TikTok.</p></div>
+      </div>
+      <div class="p-card reveal reveal-delay-2">
+        <div class="p-thumb thumb-6"><i class="fa-brands fa-wordpress"></i></div>
+        <div class="p-body"><span class="p-tag">WordPress</span><h3>Site WordPress — Mise en ligne</h3><p>Création et configuration d'un site WordPress complet pour un client.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="split-section" id="education">
+  <div class="container split-grid">
+    <div>
+      <div class="eyebrow reveal">Formation</div>
+      <h2 class="reveal reveal-delay-1" style="font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:700;margin-bottom:8px;">Parcours académique</h2>
+      <div style="margin-top:24px">
+        <div class="edu-item reveal">
+          <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div><span class="yr">2021 – 2022</span><h3>Diplôme de qualification professionnelle</h3><p>Communication digitale — IFPR Dokui</p></div>
+        </div>
+        <div class="edu-item reveal reveal-delay-1">
+          <div class="edu-icon"><i class="fa-solid fa-award"></i></div>
+          <div><span class="yr">2018 – 2019</span><h3>Baccalauréat</h3><p>Diplôme de fin d'études secondaires</p></div>
+        </div>
+        <div class="edu-item reveal reveal-delay-2">
+          <div class="edu-icon"><i class="fa-solid fa-book"></i></div>
+          <div><span class="yr">2015 – 2016</span><h3>BEPC</h3><p>Brevet d'études du premier cycle</p></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="side-block reveal">
+        <h3><i class="fa-solid fa-language" style="color:var(--gold-500);margin-right:8px"></i>Langues</h3>
+        <div class="lang-row">
+          <div class="lang-top"><span>Français</span><span>Très bon niveau</span></div>
+          <div class="lang-bar"><span style="width:95%"></span></div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-top"><span>Anglais</span><span>Intermédiaire</span></div>
+          <div class="lang-bar"><span style="width:60%"></span></div>
+        </div>
+      </div>
+      <div class="side-block reveal reveal-delay-1">
+        <h3><i class="fa-solid fa-heart" style="color:var(--gold-500);margin-right:8px"></i>Centres d'intérêt</h3>
+        <div class="interest-tags">
+          <span><i class="fa-solid fa-palette"></i> Design graphique</span>
+          <span><i class="fa-solid fa-music"></i> Musique & culture digitale</span>
+          <span><i class="fa-solid fa-futbol"></i> Football</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container contact-inner">
+    <div class="eyebrow reveal" style="justify-content:center">Contact</div>
+    <h2 class="reveal reveal-delay-1">Discutons de votre prochain projet</h2>
+    <p class="reveal reveal-delay-2">Disponible pour des missions en community management, création graphique et développement front-end.</p>
+    <div class="contact-cards">
+      <a href="mailto:malickouattara125@gmail.com" class="c-card reveal"><i class="fa-solid fa-envelope"></i><strong>Email</strong><span>malickouattara125@gmail.com</span></a>
+      <a href="tel:+2250151757200" class="c-card reveal reveal-delay-1"><i class="fa-solid fa-phone"></i><strong>Téléphone</strong><span>+225 01 51 75 72 00</span></a>
+      <div class="c-card reveal reveal-delay-2"><i class="fa-solid fa-location-dot"></i><strong>Localisation</strong><span>Abidjan, Côte d'Ivoire</span></div>
+    </div>
+    <div class="social-row reveal reveal-delay-3">
+      <a href="https://www.linkedin.com/in/malick-ouattara-68b182274/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="https://www.facebook.com/enoch.ouattara.3" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://wa.me/2250151757200" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://www.behance.net/malickouattara2" target="_blank" rel="noopener noreferrer" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <p class="brand">Malick<span style="color:var(--gold-400)">.</span>O</p>
+    <p>&copy; <span id="year"></span> Malick Ouattara. Tous droits réservés.</p>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/malick-ouattara-68b182274/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="https://www.facebook.com/enoch.ouattara.3" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://wa.me/2250151757200" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://www.behance.net/malickouattara2" target="_blank" rel="noopener noreferrer" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Retour en haut"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const header = document.getElementById('site-header');
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  header.classList.toggle('scrolled', y > 40);
+  toTop.classList.toggle('show', y > 480);
+}, { passive: true });
+
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+  burger.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
