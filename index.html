@@ -325,27 +325,29 @@ header.scrolled{
 
 /* ---------- Portfolio ---------- */
 .portfolio{background:var(--cream-50);padding:120px 0}
-.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.portfolio-grid{column-count:3;column-gap:26px}
 .p-card{
+  display:block;width:100%;text-align:left;font:inherit;color:inherit;cursor:zoom-in;
+  break-inside:avoid;margin-bottom:26px;
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
   box-shadow:var(--shadow-sm);transition:transform .3s ease, box-shadow .3s ease;
 }
 .p-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-.p-thumb{
-  aspect-ratio:4/3;position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
+.p-thumb{position:relative;overflow:hidden;background:var(--cream-100)}
+.p-thumb img{width:100%;height:auto;display:block;transition:transform .5s ease}
+.p-card:hover .p-thumb img{transform:scale(1.03)}
+.p-body{padding:18px 20px 20px}
+.lightbox{
+  position:fixed;inset:0;z-index:2000;background:rgba(7,11,24,.92);
+  display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out;
 }
-.p-thumb i{font-size:2.2rem;color:rgba(255,255,255,.85);position:relative;z-index:1}
-.p-thumb::after{
-  content:"";position:absolute;inset:0;background:rgba(7,11,24,.15);
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:100%;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lightbox .lb-close{
+  position:absolute;top:18px;right:22px;width:44px;height:44px;border-radius:50%;border:none;
+  background:rgba(255,255,255,.12);color:#fff;font-size:1.2rem;cursor:pointer;
 }
-.thumb-1{background:linear-gradient(140deg,#1c3170,#e8a53d)}
-.thumb-2{background:linear-gradient(140deg,#0a1128,#3a4160)}
-.thumb-3{background:linear-gradient(140deg,#e8a53d,#152552)}
-.thumb-4{background:linear-gradient(140deg,#152552,#f2b953)}
-.thumb-5{background:linear-gradient(140deg,#3a4160,#e8a53d)}
-.thumb-6{background:linear-gradient(140deg,#e8a53d,#0a1128)}
-.p-body{padding:22px 22px 24px}
+.portfolio-more{text-align:center;margin-top:20px}
 .p-tag{
   display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
   color:var(--gold-500);margin-bottom:8px;
@@ -443,7 +445,7 @@ footer{background:var(--navy-950);color:#9aa1c4;padding:32px 0;border-top:1px so
   .about-grid{grid-template-columns:1fr;text-align:center}
   .about-facts{grid-template-columns:1fr 1fr}
   .skills-grid{grid-template-columns:repeat(2,1fr)}
-  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+  .portfolio-grid{column-count:2}
   .split-grid{grid-template-columns:1fr;gap:70px}
   .contact-cards{grid-template-columns:1fr}
   .nav-links{display:none}
@@ -452,7 +454,7 @@ footer{background:var(--navy-950);color:#9aa1c4;padding:32px 0;border-top:1px so
 @media (max-width:600px){
   .hero{padding-top:130px}
   .skills-grid{grid-template-columns:1fr}
-  .portfolio-grid{grid-template-columns:1fr}
+  .portfolio-grid{column-count:1}
   .about-facts{grid-template-columns:1fr}
   .hero-stats{gap:24px}
   .footer-inner{flex-direction:column;text-align:center}
@@ -662,33 +664,40 @@ footer{background:var(--navy-950);color:#9aa1c4;padding:32px 0;border-top:1px so
     <div class="section-head">
       <div class="eyebrow reveal">Réalisations</div>
       <h2 class="reveal reveal-delay-1">Portfolio & projets</h2>
-      <p class="reveal reveal-delay-2">Une sélection de projets — visuels réels à intégrer prochainement.</p>
+      <p class="reveal reveal-delay-2">Une sélection de visuels réalisés pour Alternative 2 Plus et Global Empire Immobilier.</p>
     </div>
     <div class="portfolio-grid">
-      <div class="p-card reveal">
-        <div class="p-thumb thumb-1"><i class="fa-solid fa-image"></i></div>
-        <div class="p-body"><span class="p-tag">Branding</span><h3>Identité visuelle — Marque lifestyle</h3><p>Création d'une charte graphique complète et de supports de communication.</p></div>
-      </div>
-      <div class="p-card reveal reveal-delay-1">
-        <div class="p-thumb thumb-2"><i class="fa-solid fa-chart-line"></i></div>
-        <div class="p-body"><span class="p-tag">Meta Ads</span><h3>Campagne publicitaire — Acquisition</h3><p>Conception et optimisation d'une campagne Meta Ads à forte performance.</p></div>
-      </div>
-      <div class="p-card reveal reveal-delay-2">
-        <div class="p-thumb thumb-3"><i class="fa-solid fa-hashtag"></i></div>
-        <div class="p-body"><span class="p-tag">Social Media</span><h3>Animation réseaux sociaux — Lounge</h3><p>Stratégie de contenu et croissance de communauté pour un établissement.</p></div>
-      </div>
-      <div class="p-card reveal">
-        <div class="p-thumb thumb-4"><i class="fa-solid fa-laptop-code"></i></div>
-        <div class="p-body"><span class="p-tag">Développement</span><h3>Site vitrine — Front-End</h3><p>Intégration HTML/CSS/JS d'un site responsive et moderne.</p></div>
-      </div>
-      <div class="p-card reveal reveal-delay-1">
-        <div class="p-thumb thumb-5"><i class="fa-solid fa-photo-film"></i></div>
-        <div class="p-body"><span class="p-tag">Motion / Vidéo</span><h3>Contenu vidéo — Réseaux sociaux</h3><p>Montage et création de formats courts pour Instagram & TikTok.</p></div>
-      </div>
-      <div class="p-card reveal reveal-delay-2">
-        <div class="p-thumb thumb-6"><i class="fa-brands fa-wordpress"></i></div>
-        <div class="p-body"><span class="p-tag">WordPress</span><h3>Site WordPress — Mise en ligne</h3><p>Création et configuration d'un site WordPress complet pour un client.</p></div>
-      </div>
+      <button type="button" class="p-card reveal" data-full="images/a2p-sciatique.jpg" aria-label="Agrandir : Sciatique — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-sciatique.jpg" alt="Sciatique — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Santé & bien-être</span><h3>Sciatique — Alternative 2 Plus</h3><p>Post de sensibilisation pour le cabinet de santé Alternative 2 Plus.</p></div>
+      </button>
+      <button type="button" class="p-card reveal reveal-delay-1" data-full="images/a2p-fatigue-digestif.jpg" aria-label="Agrandir : Bilan digestif — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-fatigue-digestif.jpg" alt="Bilan digestif — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Santé & bien-être</span><h3>Bilan digestif — Alternative 2 Plus</h3><p>Visuel de campagne sur la fatigue, les ballonnements et le bilan digestif.</p></div>
+      </button>
+      <button type="button" class="p-card reveal reveal-delay-2" data-full="images/a2p-endometriose.jpg" aria-label="Agrandir : Endométriose — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-endometriose.jpg" alt="Endométriose — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Santé & bien-être</span><h3>Endométriose — Alternative 2 Plus</h3><p>Post d'information et de prise de rendez-vous sur les règles douloureuses.</p></div>
+      </button>
+      <button type="button" class="p-card reveal" data-full="images/a2p-fertilite-infos.jpg" aria-label="Agrandir : Fertilité : ce qu'il faut savoir">
+        <div class="p-thumb"><img src="images/a2p-fertilite-infos.jpg" alt="Fertilité : ce qu'il faut savoir" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Infographie</span><h3>Fertilité : ce qu'il faut savoir</h3><p>Infographie sur 4 anomalies fréquentes de la fertilité, femme comme homme.</p></div>
+      </button>
+      <button type="button" class="p-card reveal reveal-delay-1" data-full="images/a2p-fertilite-sondage.jpg" aria-label="Agrandir : Sondage fertilité — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-fertilite-sondage.jpg" alt="Sondage fertilité — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Affiche</span><h3>Sondage fertilité — Alternative 2 Plus</h3><p>Affiche d'engagement : la fertilité est une histoire de couple.</p></div>
+      </button>
+      <button type="button" class="p-card reveal reveal-delay-2" data-full="images/gei-villa-en-vente.jpg" aria-label="Agrandir : Villa en vente — Global Empire Immobilier">
+        <div class="p-thumb"><img src="images/gei-villa-en-vente.jpg" alt="Villa en vente — Global Empire Immobilier" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Immobilier</span><h3>Villa en vente — Global Empire Immobilier</h3><p>Annonce immobilière avec prix, conditions de paiement et contacts.</p></div>
+      </button>
+      <button type="button" class="p-card reveal" data-full="images/gei-bon-debut-semaine.jpg" aria-label="Agrandir : Bon début de semaine — GEI">
+        <div class="p-thumb"><img src="images/gei-bon-debut-semaine.jpg" alt="Bon début de semaine — GEI" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Immobilier</span><h3>Bon début de semaine — GEI</h3><p>Visuel d'animation de page pour Global Empire Immobilier.</p></div>
+      </button>
+    </div>
+    <div class="portfolio-more reveal">
+      <a href="https://www.behance.net/malickouattara2" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fa-brands fa-behance"></i> Voir plus sur Behance</a>
     </div>
   </div>
 </section>
@@ -769,6 +778,8 @@ footer{background:var(--navy-950);color:#9aa1c4;padding:32px 0;border-top:1px so
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox"><button class="lb-close" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button><img alt=""></div>
+
 <button class="to-top" id="toTop" aria-label="Retour en haut"><i class="fa-solid fa-arrow-up"></i></button>
 
 <script>
@@ -804,6 +815,15 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+const lightbox = document.getElementById('lightbox');
+const lbImg = lightbox.querySelector('img');
+document.querySelectorAll('.p-card').forEach(c => c.addEventListener('click', () => {
+  lbImg.src = c.dataset.full;
+  lightbox.classList.add('open');
+}));
+lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
 </script>
 </body>
 </html>
