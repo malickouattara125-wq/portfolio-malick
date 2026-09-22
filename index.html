@@ -201,7 +201,9 @@ header.scrolled{
   font-size:clamp(3rem,8vw,4.2rem);font-weight:800;color:var(--navy-950);
   font-family:'Poppins',sans-serif;
   box-shadow:0 20px 50px -12px rgba(232,165,61,.5);
+  overflow:hidden;
 }
+.avatar-initials img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .hero-badge{
   position:absolute;background:#fff;color:var(--navy-950);
   padding:12px 16px;border-radius:14px;box-shadow:var(--shadow-lg);
@@ -235,9 +237,10 @@ header.scrolled{
   font-family:'Poppins',sans-serif;font-weight:800;font-size:4.4rem;color:rgba(7,11,24,.85);
   position:relative;overflow:hidden;
 }
+.photo-frame .circle img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
 .photo-frame .circle::after{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(circle at 30% 20%, rgba(255,255,255,.35), transparent 55%);
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(circle at 30% 20%, rgba(255,255,255,.18), transparent 55%);
 }
 .photo-frame::before{
   content:"";position:absolute;inset:-14px;border:1px solid var(--line);border-radius:38px;z-index:-1;
@@ -504,12 +507,12 @@ footer{background:var(--navy-950);color:#9aa1c4;padding:32px 0;border-top:1px so
       <div class="hero-stats reveal reveal-delay-4">
         <div><strong>4+</strong><span>Années d'expérience</span></div>
         <div><strong>10+</strong><span>Marques accompagnées</span></div>
-        <div><strong>9</strong><span>Outils maîtrisés</span></div>
+        <div><strong>14</strong><span>Outils maîtrisés</span></div>
       </div>
     </div>
     <div class="hero-visual reveal reveal-delay-2">
       <div class="hero-orb">
-        <div class="avatar-initials">MO</div>
+        <div class="avatar-initials"><img src="images/malick-portrait.jpg" alt="Malick Ouattara"></div>
       </div>
       <div class="hero-badge b1"><i class="fa-brands fa-meta"></i> Meta Ads Certifié</div>
       <div class="hero-badge b2"><i class="fa-solid fa-code"></i> HTML · CSS · JS</div>
@@ -522,7 +525,7 @@ footer{background:var(--navy-950);color:#9aa1c4;padding:32px 0;border-top:1px so
   <div class="container about-grid">
     <div class="about-photo reveal">
       <div class="photo-frame">
-        <div class="circle">MO</div>
+        <div class="circle"><img src="images/malick-portrait.jpg" alt="Malick Ouattara"></div>
       </div>
     </div>
     <div class="about-copy">
@@ -551,7 +554,7 @@ footer{background:var(--navy-950);color:#9aa1c4;padding:32px 0;border-top:1px so
       <div class="skill-card reveal"><div class="skill-icon"><i class="fa-solid fa-chess"></i></div><h3>Pilotage de stratégie digitale</h3><p>Définition d'objectifs, positionnement de marque et plans d'action digitaux orientés résultats.</p></div>
       <div class="skill-card reveal reveal-delay-1"><div class="skill-icon"><i class="fa-solid fa-comments"></i></div><h3>Community Management</h3><p>Animation de communautés, modération et croissance d'audience sur les réseaux sociaux.</p></div>
       <div class="skill-card reveal reveal-delay-2"><div class="skill-icon"><i class="fa-solid fa-calendar-days"></i></div><h3>Contenu & calendrier éditorial</h3><p>Conception de contenus engageants et planification éditoriale cohérente et régulière.</p></div>
-      <div class="skill-card reveal reveal-delay-3"><div class="skill-icon"><i class="fa-brands fa-meta"></i></div><h3>Campagnes Meta Ads</h3><p>Paramétrage, ciblage et optimisation de campagnes publicitaires Facebook & Instagram.</p></div>
+      <div class="skill-card reveal reveal-delay-3"><div class="skill-icon"><i class="fa-solid fa-bullhorn"></i></div><h3>Campagnes publicitaires</h3><p>Paramétrage, ciblage et optimisation de campagnes Meta Ads, Google Ads et LinkedIn Ads.</p></div>
       <div class="skill-card reveal"><div class="skill-icon"><i class="fa-solid fa-pen-nib"></i></div><h3>Conception de visuels</h3><p>Création d'identités visuelles, affiches et supports de communication percutants.</p></div>
       <div class="skill-card reveal reveal-delay-1"><div class="skill-icon"><i class="fa-solid fa-code"></i></div><h3>Développement Front-End</h3><p>Intégration de sites web modernes et responsives en HTML, CSS et JavaScript.</p></div>
       <div class="skill-card reveal reveal-delay-2"><div class="skill-icon"><i class="fa-brands fa-wordpress"></i></div><h3>WordPress</h3><p>Création et gestion de sites vitrines et blogs sous WordPress.</p></div>
@@ -574,6 +577,8 @@ footer{background:var(--navy-950);color:#9aa1c4;padding:32px 0;border-top:1px so
       <div class="tool-badge reveal"><i class="fa-solid fa-film"></i> CapCut</div>
       <div class="tool-badge reveal"><i class="fa-brands fa-canva"></i> Canva</div>
       <div class="tool-badge reveal"><i class="fa-brands fa-meta"></i> Meta Ads</div>
+      <div class="tool-badge reveal"><i class="fa-brands fa-google"></i> Google Ads</div>
+      <div class="tool-badge reveal"><i class="fa-brands fa-linkedin"></i> LinkedIn Ads</div>
       <div class="tool-badge reveal"><i class="fa-brands fa-wordpress"></i> WordPress</div>
       <div class="tool-badge reveal"><i class="fa-brands fa-html5"></i> HTML</div>
       <div class="tool-badge reveal"><i class="fa-brands fa-css3-alt"></i> CSS</div>
@@ -694,6 +699,54 @@ footer{background:var(--navy-950);color:#9aa1c4;padding:32px 0;border-top:1px so
       <button type="button" class="p-card reveal" data-full="images/gei-bon-debut-semaine.jpg" aria-label="Agrandir : Bon début de semaine — GEI">
         <div class="p-thumb"><img src="images/gei-bon-debut-semaine.jpg" alt="Bon début de semaine — GEI" loading="lazy"></div>
         <div class="p-body"><span class="p-tag">Immobilier</span><h3>Bon début de semaine — GEI</h3><p>Visuel d'animation de page pour Global Empire Immobilier.</p></div>
+      </button>
+      <button type="button" class="p-card reveal reveal-delay-1" data-full="images/a2p-essai-longtemps.jpg" aria-label="Agrandir : Bilan de vitalité reproductive — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-essai-longtemps.jpg" alt="Vous essayez depuis longtemps sans résultat — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Santé & bien-être</span><h3>Vous essayez depuis longtemps ?</h3><p>Visuel d'accroche pour le bilan de vitalité reproductive.</p></div>
+      </button>
+      <button type="button" class="p-card reveal reveal-delay-2" data-full="images/a2p-bioresonance.jpg" aria-label="Agrandir : Bilan de bio-résonance — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-bioresonance.jpg" alt="Bilan de bio-résonance — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Infographie</span><h3>Bilan de bio-résonance</h3><p>Présentation des atouts du diagnostic par bio-résonance.</p></div>
+      </button>
+      <button type="button" class="p-card reveal" data-full="images/a2p-nos-prestations.jpg" aria-label="Agrandir : Nos prestations — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-nos-prestations.jpg" alt="Nos prestations — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Affiche</span><h3>Nos prestations</h3><p>Présentation des services du cabinet : infertilité, bio-résonance, hydrothérapie...</p></div>
+      </button>
+      <button type="button" class="p-card reveal reveal-delay-1" data-full="images/a2p-relaxation-soins.jpg" aria-label="Agrandir : Relaxation et soins — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-relaxation-soins.jpg" alt="Relaxation et soins — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Affiche</span><h3>Relaxation et soins</h3><p>Mise en avant du fauteuil de massage 6D du cabinet.</p></div>
+      </button>
+      <button type="button" class="p-card reveal reveal-delay-2" data-full="images/a2p-mythe-epice.jpg" aria-label="Agrandir : Mythe ou réalité — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-mythe-epice.jpg" alt="Manger épicé retarde une grossesse — Mythe ou réalité" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Contenu engageant</span><h3>Mythe ou réalité ?</h3><p>Format interactif pour engager la communauté sur les idées reçues santé.</p></div>
+      </button>
+      <button type="button" class="p-card reveal" data-full="images/a2p-shilajit.jpg" aria-label="Agrandir : Le Shilajit — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-shilajit.jpg" alt="Le Shilajit — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Produit</span><h3>Le Shilajit</h3><p>Visuel « Le saviez-vous ? » pour mettre en valeur un produit phare.</p></div>
+      </button>
+      <button type="button" class="p-card reveal reveal-delay-1" data-full="images/a2p-antioxydants.jpg" aria-label="Agrandir : Antioxydants et fertilité — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-antioxydants.jpg" alt="Alimentation riche en antioxydants — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Santé & bien-être</span><h3>Antioxydants & fertilité</h3><p>Visuel de bonne semaine sur l'alimentation et la qualité des ovules et spermatozoïdes.</p></div>
+      </button>
+      <button type="button" class="p-card reveal reveal-delay-2" data-full="images/a2p-flexisoin.jpg" aria-label="Agrandir : FlexiSoin — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-flexisoin.jpg" alt="FlexiSoin — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Produit</span><h3>FlexiSoin</h3><p>Packaging et bénéfices produit pour la solution articulaire naturelle.</p></div>
+      </button>
+      <button type="button" class="p-card reveal" data-full="images/a2p-vitalite-reproductive.jpg" aria-label="Agrandir : Bilan de vitalité reproductive — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-vitalite-reproductive.jpg" alt="Bilan de vitalité reproductive — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Affiche</span><h3>Bilan de vitalité reproductive</h3><p>Affiche de consultation détaillant l'accompagnement proposé.</p></div>
+      </button>
+      <button type="button" class="p-card reveal reveal-delay-1" data-full="images/a2p-arthrose.png" aria-label="Agrandir : L'arthrose — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-arthrose.png" alt="L'arthrose n'attend pas toujours la vieillesse — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Santé & bien-être</span><h3>L'arthrose n'attend pas la vieillesse</h3><p>Post de sensibilisation sur les douleurs articulaires précoces.</p></div>
+      </button>
+      <button type="button" class="p-card reveal reveal-delay-2" data-full="images/a2p-steatose-hepatique.png" aria-label="Agrandir : Stéatose hépatique — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-steatose-hepatique.png" alt="Votre foie peut souffrir sans que vous le sentiez — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Santé & bien-être</span><h3>Stéatose hépatique</h3><p>Sensibilisation sur la santé du foie et le bilan digestif.</p></div>
+      </button>
+      <button type="button" class="p-card reveal" data-full="images/a2p-sopk.png" aria-label="Agrandir : SOPK — Alternative 2 Plus">
+        <div class="p-thumb"><img src="images/a2p-sopk.png" alt="Cycles irréguliers, acné persistante — SOPK — Alternative 2 Plus" loading="lazy"></div>
+        <div class="p-body"><span class="p-tag">Santé & bien-être</span><h3>Le SOPK, une cause fréquente</h3><p>Post d'information sur le syndrome des ovaires polykystiques.</p></div>
       </button>
     </div>
     <div class="portfolio-more reveal">
